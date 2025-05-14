@@ -5,88 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RED_DEV | Портфолио</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Глитч-анимация */
-      @keyframes glitch {
-        0% {
-          text-shadow: 2px 0 red;
-        }
-        20% {
-          text-shadow: -2px 0 cyan;
-        }
-        40% {
-          text-shadow: 2px 0 yellow;
-        }
-        60% {
-          text-shadow: none;
-        }
-        100% {
-          text-shadow: none;
-        }
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="glitch-bg"></div>
-    <!-- Фон с частицами -->
-
-    <!-- Курсор-пиксель -->
+    <!-- Кастомный курсор -->
     <div class="cursor"></div>
 
-    <!-- Главное меню -->
-    <nav class="pixel-menu">
-      <div class="menu-btn" data-text="MENU">MENU</div>
-      <ul>
-        <li><a href="#home" data-text="HOME">HOME</a></li>
-        <li><a href="#bio" data-text="BIO">BIO</a></li>
-        <li><a href="#projects" data-text="PROJECTS">PROJECTS</a></li>
-        <li><a href="#contact" data-text="CONTACT">CONTACT</a></li>
-      </ul>
-    </nav>
-
-    <!-- Hero-секция -->
-    <section id="home" class="hero">
-      <h1 class="glitch-text" data-text="ALEX_DEV">ALEX_DEV</h1>
-      <p class="status">status: <span class="blink">available</span></p>
-    </section>
-
-    <!-- Биография в стиле терминала -->
-    <section id="bio" class="terminal">
-      <div class="terminal-header">
-        <span class="red-btn"></span>
-        <span class="yellow-btn"></span>
-        <span class="green-btn"></span>
-        <span>user@portfolio:~</span>
-      </div>
-      <div class="terminal-body">
-        <p>> whoami</p>
-        <p>Full-stack developer with 5+ years of experience.</p>
-        <p>> skills --list</p>
-        <p>JavaScript | React | Node.js | UI/UX</p>
-      </div>
-    </section>
-
-    <!-- Проекты (перетаскиваемые карточки) -->
-    <section id="projects" class="projects">
-      <div class="project-card" draggable="true">
-        <h3>Project_01</h3>
-        <p>Интерактивная веб-панель</p>
-      </div>
-      <div class="project-card" draggable="true">
-        <h3>Project_02</h3>
-        <p>Мобильное приложение</p>
-      </div>
-    </section>
-
-    <!-- Контакты с глитч-эффектом -->
-    <section id="contact" class="contact">
-      <form id="contact-form">
-        <input type="text" placeholder="YOUR_NAME" required />
-        <input type="email" placeholder="EMAIL" required />
-        <textarea placeholder="MESSAGE"></textarea>
-        <button type="submit" class="glitch-btn">SEND</button>
-      </form>
-    </section>
+    <!-- Контент -->
+    <header>
+      <h1 class="glitch" data-text="ALEX_DEV">ALEX_DEV</h1>
+      <p class="status">status: <span class="blink">online</span></p>
+    </header>
 
     <script src="script.js"></script>
   </body>

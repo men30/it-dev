@@ -1,88 +1,73 @@
 /* Базовые стили */
 body {
-  background-color: #111;
+  margin: 0;
+  background: #111 url("assets/noise.png");
   color: #fff;
-  font-family: "Courier New", monospace;
-  overflow-x: hidden;
+  font-family: "Share Tech Mono", monospace;
   cursor: none;
+  overflow-x: hidden;
 }
 
-/* Глитч-фон */
-.glitch-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(255, 0, 0, 0.03), transparent),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.3"><rect width="1" height="1" fill="red"/></svg>');
-  z-index: -1;
-  animation: noise 0.5s infinite alternate;
-}
-
-@keyframes noise {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-5px, 5px);
-  }
-}
-
-/* Нестандартный курсор */
+/* Курсор */
 .cursor {
   position: fixed;
-  width: 8px;
-  height: 8px;
-  background: red;
+  width: 12px;
+  height: 12px;
+  background: #ff0000;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
+  transform: translate(-50%, -50%);
   mix-blend-mode: difference;
+  transition: transform 0.15s;
 }
 
-/* Меню с пиксельным эффектом */
-.pixel-menu ul li a:hover {
-  animation: glitch 0.3s linear;
-  color: red;
-}
-
-/* Hero-секция */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.glitch-text {
-  font-size: 5rem;
+/* Глитч-эффект */
+.glitch {
   position: relative;
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 20vh;
+  animation: glitch 5s infinite;
 }
 
-.glitch-text:hover {
-  animation: glitch 0.5s linear;
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 2px 0 #0ff;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitch-anim 3s infinite;
 }
 
-.status {
-  font-size: 1.5rem;
-  color: #666;
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 3px);
+  }
+  40% {
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    transform: translate(3px, 3px);
+  }
+  80% {
+    transform: translate(3px, -3px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
 
+/* Статус */
 .blink {
-  animation: blink 1s infinite;
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
   50% {
     opacity: 0;
-  }
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 3rem;
   }
 }
