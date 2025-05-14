@@ -4,22 +4,212 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RED_DEV | Портфолио</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
-      rel="stylesheet"
-    />
+    <style>
+      /* Сброс стилей */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Основные стили */
+      body {
+        background-color: #111;
+        color: #fff;
+        font-family: "Courier New", monospace;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* Кастомный курсор */
+      .cursor {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: #ff0000;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition: transform 0.15s;
+      }
+
+      /* Увеличение курсора при наведении */
+      a:hover ~ .cursor,
+      button:hover ~ .cursor {
+        transform: translate(-50%, -50%) scale(2);
+      }
+
+      /* Шапка */
+      header {
+        padding: 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        color: #ff0000;
+      }
+
+      /* Главный экран */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      .glitch {
+        font-size: 4rem;
+        position: relative;
+        animation: glitch 5s infinite;
+      }
+
+      @keyframes glitch {
+        0% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-3px, 3px);
+        }
+        40% {
+          transform: translate(-3px, -3px);
+        }
+        60% {
+          transform: translate(3px, 3px);
+        }
+        80% {
+          transform: translate(3px, -3px);
+        }
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      .status {
+        margin-top: 20px;
+        color: #888;
+      }
+
+      .blink {
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Меню */
+      nav {
+        display: flex;
+        gap: 20px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #ff0000;
+      }
+
+      /* Секции */
+      section {
+        padding: 100px 20px;
+        min-height: 100vh;
+      }
+
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        .glitch {
+          font-size: 2.5rem;
+        }
+
+        nav {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Кастомный курсор -->
     <div class="cursor"></div>
 
-    <!-- Контент -->
+    <!-- Шапка -->
     <header>
-      <h1 class="glitch" data-text="ALEX_DEV">ALEX_DEV</h1>
-      <p class="status">status: <span class="blink">online</span></p>
+      <div class="logo">RED_DEV</div>
+      <nav>
+        <a href="#home">Главная</a>
+        <a href="#projects">Проекты</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact">Контакты</a>
+      </nav>
     </header>
 
-    <script src="script.js"></script>
+    <!-- Главный экран -->
+    <section id="home" class="hero">
+      <h1 class="glitch">ALEX_DEV</h1>
+      <p class="status">status: <span class="blink">online</span></p>
+    </section>
+
+    <!-- Секция проектов -->
+    <section id="projects">
+      <h2>Мои проекты</h2>
+      <!-- Здесь будут карточки проектов -->
+    </section>
+
+    <!-- Секция "Обо мне" -->
+    <section id="about">
+      <h2>Кто я</h2>
+      <p>Full-stack разработчик с 5+ годами опыта.</p>
+    </section>
+    <!-- Контакты -->
+    <section id="contact">
+      <h2>Свяжитесь со мной</h2>
+      <form>
+        <input type="text" placeholder="Ваше имя" />
+        <input type="email" placeholder="Email" />
+        <textarea placeholder="Сообщение"></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+    </section>
+
+    <script>
+      // Анимация курсора
+      const cursor = document.querySelector(".cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      // Глитч-эффект для ссылок
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          cursor.style.transform = "translate(-50%, -50%) scale(2)";
+        });
+        link.addEventListener("mouseleave", () => {
+          cursor.style.transform = "translate(-50%, -50%) scale(1)";
+        });
+      });
+
+      // Анимация при загрузке
+      window.addEventListener("load", () => {
+        document.querySelector(".glitch").style.animation =
+          "glitch 5s infinite";
+      });
+    </script>
   </body>
 </html>
