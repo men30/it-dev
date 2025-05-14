@@ -1,0 +1,88 @@
+/* Базовые стили */
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: "Courier New", monospace;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Глитч-фон */
+.glitch-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 0, 0, 0.03), transparent),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.3"><rect width="1" height="1" fill="red"/></svg>');
+  z-index: -1;
+  animation: noise 0.5s infinite alternate;
+}
+
+@keyframes noise {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-5px, 5px);
+  }
+}
+
+/* Нестандартный курсор */
+.cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+/* Меню с пиксельным эффектом */
+.pixel-menu ul li a:hover {
+  animation: glitch 0.3s linear;
+  color: red;
+}
+
+/* Hero-секция */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.glitch-text {
+  font-size: 5rem;
+  position: relative;
+}
+
+.glitch-text:hover {
+  animation: glitch 0.5s linear;
+}
+
+.status {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
